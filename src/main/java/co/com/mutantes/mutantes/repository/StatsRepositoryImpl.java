@@ -4,7 +4,7 @@ import co.com.mutantes.mutantes.model.Stats;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class StatsRepositoryImp implements StatsRepository{
+public class StatsRepositoryImpl implements StatsRepository{
 
     @Override
     public Stats getStats(){

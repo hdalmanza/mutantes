@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StatsServiceImp implements StatsService {
+public class StatsServiceImpl implements StatsService {
 
     @Autowired
     private StatsRepository statsRepository;
@@ -17,7 +17,11 @@ public class StatsServiceImp implements StatsService {
     @Override
     public ResponseEntity<Object> getStats(){
         Stats stats =statsRepository.getStats();
-        stats.ratio = Double.valueOf (stats.count_mutant_dna/ stats.count_human_dna);
+        if(null != stats.count_human_dna && null != stats.count_mutant_dna && stats.count_human_dna > 0 ){
+            stats.ratio = Double.valueOf (stats.count_mutant_dna/ stats.count_human_dna);
+        }else {
+            stats.ratio = 0D;
+        }
         String message = new Gson().toJson(stats);
         return new ResponseEntity<>(message, HttpStatus.OK);
     }

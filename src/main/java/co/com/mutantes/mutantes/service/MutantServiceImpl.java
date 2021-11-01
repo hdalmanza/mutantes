@@ -15,9 +15,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
-public class mutantServiceImp implements mutantService{
+public class MutantServiceImpl implements mutantService{
 
-    private List<String> letters;
     @Autowired
     private Parameters parameters;
     @Autowired
@@ -139,12 +138,20 @@ public class mutantServiceImp implements mutantService{
     }
 
     private void updateCountMutant( Stats stats){
-       stats.count_mutant_dna = stats.count_mutant_dna ++;
+       if(null !=stats.count_mutant_dna){
+           stats.count_mutant_dna = stats.count_mutant_dna +1;
+       }else{
+           stats.count_mutant_dna = 1;
+       }
        statsRepository.updateStats(stats);
     }
 
     private void updateCountHuman( Stats stats){
-        stats.count_human_dna = stats.count_human_dna ++;
+        if(null !=  stats.count_human_dna ){
+            stats.count_human_dna = stats.count_human_dna +1;
+        }else{
+            stats.count_human_dna = 1;
+        }
         statsRepository.updateStats(stats);
     }
 
