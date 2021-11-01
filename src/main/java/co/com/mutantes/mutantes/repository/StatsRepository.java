@@ -1,9 +1,10 @@
 package co.com.mutantes.mutantes.repository;
 
 import co.com.mutantes.mutantes.model.Stats;
+import org.bson.conversions.Bson;
 
 public interface StatsRepository {
      Stats getStats();
-     void updateStats(Stats count);
+     void updateStats(Bson updateValue);
 
 }

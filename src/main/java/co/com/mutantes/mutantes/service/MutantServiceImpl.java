@@ -4,6 +4,8 @@ import co.com.mutantes.mutantes.model.Stats;
 import co.com.mutantes.mutantes.repository.StatsRepository;
 import co.com.mutantes.mutantes.utils.GeneralUtils;
 import co.com.mutantes.mutantes.utils.Parameters;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -143,7 +145,8 @@ public class MutantServiceImpl implements mutantService{
        }else{
            stats.count_mutant_dna = 1;
        }
-       statsRepository.updateStats(stats);
+        Bson updateValue = new Document("count_mutant_dna", stats.count_mutant_dna);
+        statsRepository.updateStats(updateValue);
     }
 
     private void updateCountHuman( Stats stats){
@@ -152,7 +155,8 @@ public class MutantServiceImpl implements mutantService{
         }else{
             stats.count_human_dna = 1;
         }
-        statsRepository.updateStats(stats);
+        Bson updateValue = new Document("count_human_dna", stats.count_human_dna);
+        statsRepository.updateStats(updateValue);
     }
 
 }
