@@ -1,7 +1,6 @@
 package co.com.mutantes.mutantes.repository;
 
 import co.com.mutantes.mutantes.model.Stats;
-import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -14,10 +13,12 @@ public class StatsRepositoryImpl implements StatsRepository{
     @Autowired
     private MongoDatabase connectMongoDb;
 
+    private static final  String STATS = "stats";
+
     @Override
     public Stats getStats(){
         Stats stats = new Stats();
-        Document document= connectMongoDb.getCollection("stats").find().first();
+        Document document= connectMongoDb.getCollection(STATS).find().first();
         stats.count_human_dna = document.getInteger("count_human_dna");
         stats.count_mutant_dna =  document.getInteger("count_mutant_dna");
         return  stats;
@@ -25,10 +26,9 @@ public class StatsRepositoryImpl implements StatsRepository{
 
     @Override
     public void updateStats(Bson updateValue) {
-        MongoCollection mongoCollection = connectMongoDb.getCollection("stats");
-        Document document= connectMongoDb.getCollection("stats").find().first();
+        Document document= connectMongoDb.getCollection(STATS).find().first();
         Bson updateOperation = new  Document("$set", updateValue);
-        mongoCollection.updateOne(document,updateOperation);
+        connectMongoDb.getCollection(STATS).updateOne(document,updateOperation);
     }
 
 }

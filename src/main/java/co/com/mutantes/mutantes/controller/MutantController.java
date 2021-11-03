@@ -1,7 +1,7 @@
 package co.com.mutantes.mutantes.controller;
 
 import co.com.mutantes.mutantes.model.Dna;
-import co.com.mutantes.mutantes.service.mutantService;
+import co.com.mutantes.mutantes.service.MutantService;
 import co.com.mutantes.mutantes.utils.GeneralUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MutantController {
 
     @Autowired
-    private mutantService mutantService;
+    private MutantService mutantService;
     @Autowired
     private GeneralUtils generalUtils;
 

@@ -1,9 +1,8 @@
 package co.com.mutantes.mutantes.controller;
 
 import co.com.mutantes.mutantes.model.Dna;
+import co.com.mutantes.mutantes.service.MutantService;
 import co.com.mutantes.mutantes.utils.GeneralUtils;
-import net.bytebuddy.matcher.ElementMatchers;
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +21,7 @@ public class MutantControllerTest {
     @InjectMocks
     private  MutantController mutantController;
     @Mock
-    private co.com.mutantes.mutantes.service.mutantService mutantService;
+    private MutantService mutantService;
     @Mock
     private GeneralUtils generalUtils;
 

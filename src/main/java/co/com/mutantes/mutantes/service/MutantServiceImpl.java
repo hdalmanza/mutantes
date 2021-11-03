@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
-public class MutantServiceImpl implements mutantService{
+public class MutantServiceImpl implements MutantService {
 
     @Autowired
     private Parameters parameters;
